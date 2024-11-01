@@ -1,0 +1,101 @@
+******************* Lecture - 2 *********************************************
+why am i learning this?
+to explore new paradigms of web development
+it is one of the fastest.
+it is one of the powerful framework.
+
+Django makes it easier to build better web apps more quickly and with less code.
+
+Ridiculously fast.
+Django was designed to help developers take applications from concept to completion as quickly as possible.
+
+Reassuringly secure.
+Django takes security seriously and helps developers avoid many common security mistakes.
+
+Exceedingly scalable.
+Some of the busiest sites on the web leverage Django’s ability to quickly and flexibly scale.
+scalable at low cost
+
+we will be working with uv
+uv is an extremely fast Python package and project manager, written in Rust.
+installation and setup
+https://pypi.org/project/uv/
+
+
+started working from here
+step1: create and execute virtual environment
+https://docs.astral.sh/uv/pip/environments/
+uv venv - creates a virtual environment
+.venv\Scripts\activate - activates the virtual environment
+diactivate - deactivates the virtual environment
+
+To install Django: uv pip install Django
+whatever we install being in virtual environment, make sure that we use
+uv pip install.... instead of pip install......
+
+
+django-admin -  this command will give you all the available sub commands related to django admin
+django-admin startproject project-name : this command will start a new project
+*Note - don't worry about same project name inside the same project name
+
+cd project-name => ls => 1.project 2.manage.py
+python manage.py runserver => will give a link where our project is running
+
+
+
+********************************** Lecture-3 template and errors *********************************************
+
+
+BASIC FLOW OF Django WORKING
+=> user wants to send request or get response
+=> user fires request/response to browser
+=> request goes to website
+=> this request goes to Django
+=> Django send to url resolver. it resolves whether we want to access login, home or any other page.
+=> after this goes to urls.py
+=> after this there comes more urls.py (modules)
+=> after which views.py block comes
+=> to get access of DB, views.py uses model.py and then accesses DB
+=> this views.py returns response directly to the Django
+=> sometimes views.py returns response via a template
+basic diagram of above structure is:
+user=>request=>urls.py=>views.py==>\\
+^<<====response =========<<========//
+
+FROM HERE WE START WRITING THE project
+=> create a views.py file below urls.py
+=> go to views.py
+=> we created 3 sections -> home, about and contact (functions)
+=> go to urls.py 
+=> write the path for home, about and contact
+=> navigate to the directory where when we do ls, it contains manage.py file
+=> write "python manage.py runserver" in terminal
+
+Now let's look into the templates
+create two folders inside root directory chaiaurDjango
+1. templates and 2.static
+create a file index.html inside templates and some code inside index.html
+go to views
+from django.shortcuts import render and use it in place of home
+go to setting.py=> TEMPLATES=> DIRS => write 'templates'
+now python manage.py runserver
+create website folder inside templates and move index.html inside it
+change path in views.py, from index.html to website/index.html
+lets see how we can use the static folder
+create a file style.css inside the static folder and write some css inside it
+go to the index.html file again
+link the style.css to index.html file
+for this we need to inject css file into index.html, how to do it?
+inside html file
+{% load static %}
+link of css => path href="{% static 'style.css' %}"    # {% %} it is used to inject some code
+go to settings=>import os=>STATIC_URL=> add STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+inside static folder, we can put javascript files also
+assignment => design your home, aobut and contact section
+
+
+
+********************************** Lecture-3 template and errors *********************************************
+
+
+
